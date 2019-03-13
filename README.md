@@ -12,7 +12,7 @@ Cryptor is a program which encrypts or decrypts files or strings based on your n
 ## Author
 
 |Name|ID|
-|:--|--:|
+|:--|:--:|
 |1. Nguyễn Lương Phúc Vinh| 1514063|
 |2. Bùi Lương Bảo|1510146|
 |3. Tràn Quang Lễ|1511715|
