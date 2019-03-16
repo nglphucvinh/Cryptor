@@ -1,4 +1,5 @@
 #include "crypto.h"
+#include <QMutex>
 
 void progressBar_show(QProgressBar *bar, int value){
     bar->setValue(value);
@@ -56,6 +57,12 @@ void rsa_return(int value, QLabel *label, QProgressBar *bar){
         label->setStyleSheet("QLabel {color : red;}");
         bar->hide();
         break;
+    case 0:
+        str = QString("Process is cancelled !!!");
+        label->setText(str);
+        label->setStyleSheet("QLabel {color : black;}");
+        bar->hide();
+        break;
     case 1:
         str = QString("Successful !!!");
         label->setText(str);
@@ -68,7 +75,7 @@ void rsa_return(int value, QLabel *label, QProgressBar *bar){
     }
 }
 
-int rsa(const char *path, const char *out_path, const char *key_path, int isPublic, QProgressBar *bar){
+int rsa(const char *path, const char *out_path, const char *key_path, int isPublic, QProgressBar *bar, bool &mStop){
     FILE *fp;
     struct stat st;
     RSA *rsa ;
@@ -114,16 +121,21 @@ int rsa(const char *path, const char *out_path, const char *key_path, int isPubl
     }
 
     if(isPublic){
-       return rsa_encrypt(&in[0], input_size, rsa, fp, bar);     //public encrypt
+       return rsa_encrypt(&in[0], input_size, rsa, fp, bar, mStop);     //public encrypt
     }else{
-       return rsa_decrypt(&in[0], input_size, rsa, fp, bar);     //private decrypt
+       return rsa_decrypt(&in[0], input_size, rsa, fp, bar, mStop);     //private decrypt
     }
 }
 
-int rsa_encrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, QProgressBar *bar){
+int rsa_encrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, QProgressBar *bar, bool &mStop){
     int block_size = RSA_size(rsa) - 48;
     int block_num = (in_length % block_size == 0) ? in_length/block_size: in_length/block_size + 1;
     for(int i = 0; i < block_num; i++){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         int flen = block_size;
         unsigned char temp[RSA_size(rsa)];
 
@@ -137,17 +149,24 @@ int rsa_encrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, Q
             fputc(temp[j], fp);
         }
         progressBar_show(bar, 100*(i+1)/block_num);
+
+        mutex.unlock();
     }
     fclose(fp);
     return 1;
 }
 
-int rsa_decrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, QProgressBar *bar){
+int rsa_decrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, QProgressBar *bar, bool &mStop){
     int block_size = RSA_size(rsa);
     if(in_length % block_size != 0)
         return -7;                  //input size not correct
     int block_num = in_length/block_size;
     for(int i = 0; i < block_num; i++){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         unsigned char temp[block_size];
         int de_length = RSA_private_decrypt(block_size, in + i*block_size, &temp[0], rsa, RSA_PKCS1_OAEP_PADDING);
         if(de_length == -1)
@@ -156,6 +175,8 @@ int rsa_decrypt(unsigned char *in, unsigned int in_length, RSA *rsa, FILE *fp, Q
             fputc(temp[j], fp);
         }
         progressBar_show(bar, 100*(i+1)/block_num);
+
+        mutex.unlock();
     }
     fclose(fp);
     return 1;
@@ -196,6 +217,12 @@ void aes_return(int value, QLabel *label, QProgressBar *bar){
         label->setStyleSheet("QLabel {color : red;}");
         bar->hide();
         break;
+    case 0:
+        str = QString("Process is cancelled !!!");
+        label->setText(str);
+        label->setStyleSheet("QLabel {color : black;}");
+        bar->hide();
+        break;
     case 1:
         str = QString("Successful !!!");
         label->setText(str);
@@ -209,7 +236,7 @@ void aes_return(int value, QLabel *label, QProgressBar *bar){
 }
 
 
-int aes(const char *path, const char *out_path, const char *key_path, int isEncrypt, QProgressBar *bar){
+int aes(const char *path, const char *out_path, const char *key_path, int isEncrypt, QProgressBar *bar, bool &mStop){
     FILE *fp;
     struct stat st;
     AES_KEY key_aes;
@@ -255,40 +282,55 @@ int aes(const char *path, const char *out_path, const char *key_path, int isEncr
     }
 
     if(isEncrypt){
-        return aes_encrypt(&in[0], in_size, &key_aes, fp, bar);
+        return aes_encrypt(&in[0], in_size, &key_aes, fp, bar, mStop);
     }else{
-        return aes_decrypt(&in[0], in_size, &key_aes, fp, bar);
+        return aes_decrypt(&in[0], in_size, &key_aes, fp, bar, mStop);
     }
 }
 
-int aes_encrypt(unsigned char *in, unsigned int in_length, AES_KEY *aes_key, FILE *fp, QProgressBar *bar){
+int aes_encrypt(unsigned char *in, unsigned int in_length, AES_KEY *aes_key, FILE *fp, QProgressBar *bar, bool &mStop){
     unsigned int k = 0;
     unsigned char out[16];
     while(k < in_length){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         AES_encrypt((const unsigned char *) &in[k], &out[0], aes_key);
         for(int i = 0; i < 16; i++){
             fputc(out[i], fp);
         }
         progressBar_show(bar, 100*k/in_length + 1);
         k = k + 16;
+
+        mutex.unlock();
+
     }
     fclose(fp);
     return 1;
 }
 
-int aes_decrypt(unsigned char *in, unsigned int in_length, AES_KEY *aes_key, FILE *fp, QProgressBar *bar){
+int aes_decrypt(unsigned char *in, unsigned int in_length, AES_KEY *aes_key, FILE *fp, QProgressBar *bar, bool &mStop){
     if(in_length % 16 != 0){
         return -5;          //invalid input size
     }
     unsigned int k = 0;
     unsigned char out[16];
     while(k < in_length){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         AES_decrypt((const unsigned char *) &in[k], &out[0], aes_key);
         for(int i = 0; i < 16; i++){
             fputc(out[i], fp);
         }
         progressBar_show(bar, 100*k/in_length + 1);
         k = k + 16;
+
+        mutex.unlock();
     }
     fclose(fp);
     return 1;
@@ -328,6 +370,12 @@ void des_return(int value, QLabel *label, QProgressBar *bar){
         label->setStyleSheet("QLabel {color : red;}");
         bar->hide();
         break;
+    case 0:
+        str = QString("Process is cancelled !!!");
+        label->setText(str);
+        label->setStyleSheet("QLabel {color : black;}");
+        bar->hide();
+        break;
     case 1:
         str = QString("Successful !!!");
         label->setText(str);
@@ -340,7 +388,7 @@ void des_return(int value, QLabel *label, QProgressBar *bar){
     }
 }
 
-int des(const char *path, const char *out_path, const char *key_path, int isEncrypt, QProgressBar *bar){
+int des(const char *path, const char *out_path, const char *key_path, int isEncrypt, QProgressBar *bar, bool &mStop){
     FILE *fp;
     struct stat st;
 
@@ -384,41 +432,55 @@ int des(const char *path, const char *out_path, const char *key_path, int isEncr
 
 
     if(isEncrypt){
-        return des_encrypt(in, in_size, &key_schedule, fp, bar);
+        return des_encrypt(in, in_size, &key_schedule, fp, bar, mStop);
     }else{
-        return des_decrypt(in, in_size, &key_schedule, fp, bar);
+        return des_decrypt(in, in_size, &key_schedule, fp, bar, mStop);
     }
 }
 
-int des_encrypt(unsigned char *in, unsigned int in_length, DES_key_schedule *key_schedule, FILE *fp, QProgressBar *bar){
+int des_encrypt(unsigned char *in, unsigned int in_length, DES_key_schedule *key_schedule, FILE *fp, QProgressBar *bar, bool &mStop){
     unsigned int k = 0;
     unsigned char out[8];
     while(k < in_length){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         DES_ecb_encrypt((DES_cblock *) &in[k], (DES_cblock *) out, key_schedule, DES_ENCRYPT);
         for(int i = 0; i < 8; i++){
             fputc(out[i], fp);
         }
         progressBar_show(bar, 100*k/in_length + 1);
         k = k + 8;
+
+        mutex.unlock();
     }
     fclose(fp);
 
     return 1;
 }
 
-int des_decrypt(unsigned char *in, unsigned int in_length, DES_key_schedule *key_schedule, FILE *fp, QProgressBar *bar){
+int des_decrypt(unsigned char *in, unsigned int in_length, DES_key_schedule *key_schedule, FILE *fp, QProgressBar *bar, bool &mStop){
     unsigned int k = 0;
     unsigned char out[8];
     if(in_length % 8 != 0){
         return -5;          //invalid input size
     }
     while(k < in_length){
+        QMutex mutex;
+        mutex.lock();
+        if(mStop)
+            return 0;
+
         DES_ecb_encrypt((DES_cblock *) &in[k], (DES_cblock *) out, key_schedule, DES_DECRYPT);
         for(int i = 0; i < 8; i++){
             fputc(out[i], fp);
         }
         progressBar_show(bar, 100*k/in_length + 1);
         k = k + 8;
+
+        mutex.unlock();
     }
     fclose(fp);
 
