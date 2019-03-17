@@ -5,6 +5,58 @@ void progressBar_show(QProgressBar *bar, int value){
     bar->setValue(value);
 }
 
+int hash(const char *path, int type){
+    FILE *fp;
+    struct stat st;
+
+    fp = fopen(path, "r");
+    if(fp == NULL){
+        return -1;
+    }
+
+    stat(path, &st);
+    unsigned int size = st.st_size;
+    unsigned char in[size];
+    for(unsigned int i = 0; i < size; i++){
+        in[i] = fgetc(fp);
+    }
+    fclose(fp);
+
+    if(type){
+        return md5_hash(in, size);
+    }else{
+        return sha1_hash(in, size);
+    }
+}
+
+int md5_hash(unsigned char *in, unsigned int size){
+    unsigned char out[16];
+    MD5_CTX ctx;
+    MD5_Init(&ctx);
+    MD5_Update(&ctx, in, size);
+    MD5_Final(out, &ctx);
+    FILE *fp = fopen("/home/bao/qt/gui/_hash.txt", "w");
+    for(int i = 0; i < 16; i++){
+        fprintf(fp, "%x", out[i]);
+    }
+    fclose(fp);
+    return 1;
+}
+
+int sha1_hash(unsigned char *in, unsigned int size){
+    unsigned char out[20];
+    SHA_CTX ctx;
+    SHA1_Init(&ctx);
+    SHA1_Update(&ctx, in, size);
+    SHA1_Final(out, &ctx);
+    FILE *fp = fopen("/home/bao/qt/gui/_hash.txt", "w");
+    for(int i = 0; i < 20; i++){
+        fprintf(fp, "%x", out[i]);
+    }
+    fclose(fp);
+    return 1;
+}
+
 void rsa_return(int value, QLabel *label, QProgressBar *bar){
     QString str;
     label->show();

@@ -10,12 +10,18 @@
 #include <openssl/rsa.h>
 #include <openssl/pem.h>
 #include <openssl/evp.h>
+#include <openssl/sha.h>
+#include <openssl/md5.h>
 #include <QProgressBar>
 #include <QString>
 #include <QColor>
 #include <QLabel>
 
 void progressBar_show(QProgressBar *bar, int value);
+
+int hash(const char *path, int type);
+int md5_hash(unsigned char *in, unsigned int size);
+int sha1_hash(unsigned char *in, unsigned int size);
 
 void rsa_return(int value, QLabel *label, QProgressBar *bar);
 void aes_return(int value, QLabel *label, QProgressBar *bar);
