@@ -26,10 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        src/crypto.cpp \
+        src/mythread.cpp \
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        src/crypto.h \
+        src/mythread.h \
 
 FORMS += \
         mainwindow.ui

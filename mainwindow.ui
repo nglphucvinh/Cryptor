@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>473</height>
+    <width>521</width>
+    <height>629</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,34 +17,34 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>370</y>
-      <width>401</width>
-      <height>23</height>
+      <x>20</x>
+      <y>440</y>
+      <width>481</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="value">
      <number>24</number>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="hash_sel">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>190</y>
-      <width>111</width>
+      <y>300</y>
+      <width>101</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Hash Function</string>
+     <string>Hash Function:</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>190</y>
+      <x>150</x>
+      <y>300</y>
       <width>69</width>
       <height>25</height>
      </rect>
@@ -60,11 +60,11 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="encrypt_button">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>140</y>
+      <x>100</x>
+      <y>220</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -73,11 +73,11 @@
      <string>Encrypt</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="decrypt_button">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>140</y>
+      <x>300</x>
+      <y>220</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -86,11 +86,11 @@
      <string>Decrypt</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="hash_input">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>230</y>
+      <y>340</y>
       <width>371</width>
       <height>25</height>
      </rect>
@@ -99,21 +99,27 @@
    <widget class="QSplitter" name="splitter">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>271</width>
+      <x>20</x>
+      <y>120</y>
+      <width>311</width>
       <height>25</height>
      </rect>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="encrypt">
      <property name="text">
-      <string>Encryption Type</string>
+      <string>Encryption Type:</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="key_type">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <item>
       <property name="text">
        <string>Asymmetric - RSA</string>
@@ -131,61 +137,235 @@
      </item>
     </widget>
    </widget>
-   <widget class="QSplitter" name="splitter_3">
+   <widget class="QLineEdit" name="hash_output">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>391</width>
+      <x>20</x>
+      <y>380</y>
+      <width>371</width>
       <height>25</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>3r23f2f</string>
     </property>
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Key:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_2"/>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="text">
-      <string>From files</string>
-     </property>
-    </widget>
+    <property name="echoMode">
+     <enum>QLineEdit::NoEcho</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
-   <widget class="QSplitter" name="splitter_2">
+   <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>391</width>
+      <x>220</x>
+      <y>490</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="gen_button">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>340</y>
+      <width>89</width>
       <height>25</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>Genearate</string>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Input:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit"/>
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>From files</string>
-     </property>
-    </widget>
    </widget>
+   <widget class="QPushButton" name="copy_button">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>380</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hash_lab">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>260</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Hashes</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="background">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>521</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../background-blue.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cipher_lab">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>20</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Ciphers</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="key">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>29</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Key:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="input">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>40</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Input:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="file_sel">
+    <property name="geometry">
+     <rect>
+      <x>423</x>
+      <y>80</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>From files</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_sel">
+    <property name="geometry">
+     <rect>
+      <x>423</x>
+      <y>170</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>From files</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="input_box">
+    <property name="geometry">
+     <rect>
+      <x>74</x>
+      <y>80</y>
+      <width>331</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>150</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="input_key">
+    <property name="geometry">
+     <rect>
+      <x>73</x>
+      <y>170</y>
+      <width>331</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>background</zorder>
+   <zorder>progressBar</zorder>
+   <zorder>hash_sel</zorder>
+   <zorder>comboBox_2</zorder>
+   <zorder>encrypt_button</zorder>
+   <zorder>decrypt_button</zorder>
+   <zorder>hash_input</zorder>
+   <zorder>splitter</zorder>
+   <zorder>splitter_3</zorder>
+   <zorder>splitter_2</zorder>
+   <zorder>hash_output</zorder>
+   <zorder>status</zorder>
+   <zorder>gen_button</zorder>
+   <zorder>copy_button</zorder>
+   <zorder>hash_lab</zorder>
+   <zorder>cipher_lab</zorder>
+   <zorder>key</zorder>
+   <zorder>input</zorder>
+   <zorder>file_sel</zorder>
+   <zorder>key_sel</zorder>
+   <zorder>input_box</zorder>
+   <zorder>input_key</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>409</width>
+     <width>521</width>
      <height>22</height>
     </rect>
    </property>
