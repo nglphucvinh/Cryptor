@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/myres">
+        <file>res/background-blue.png</file>
+    </qresource>
+</RCC>

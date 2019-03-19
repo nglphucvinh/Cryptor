@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Hash Function:</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Hash Function:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox_2">
@@ -110,7 +110,7 @@
     </property>
     <widget class="QLabel" name="encrypt">
      <property name="text">
-      <string>Encryption Type:</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Encryption Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QComboBox" name="key_type">
@@ -213,7 +213,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Hashes</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#73d216;&quot;&gt;Hashes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -229,10 +229,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../background-blue.png</pixmap>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/myres/res/background-blue.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="cipher_lab">
@@ -253,7 +250,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Ciphers</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#73d216;&quot;&gt;Ciphers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -264,12 +261,12 @@
      <rect>
       <x>20</x>
       <y>170</y>
-      <width>29</width>
+      <width>41</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>Key:</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#eeeeec;&quot;&gt;Key:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="input">
@@ -282,7 +279,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Input:</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Input:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="file_sel">
@@ -345,8 +342,6 @@
    <zorder>decrypt_button</zorder>
    <zorder>hash_input</zorder>
    <zorder>splitter</zorder>
-   <zorder>splitter_3</zorder>
-   <zorder>splitter_2</zorder>
    <zorder>hash_output</zorder>
    <zorder>status</zorder>
    <zorder>gen_button</zorder>
@@ -379,11 +374,6 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionHello">
-   <property name="text">
-    <string>Hello</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
