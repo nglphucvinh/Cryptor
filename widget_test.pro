@@ -24,26 +24,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+CONFIG += console
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
         src/crypto.cpp \
-        src/mythread.cpp \
+        src/mythread.cpp
 
 HEADERS += \
         mainwindow.h \
         src/crypto.h \
-        src/mythread.h \
+        src/mythread.h
 
 FORMS += \
         mainwindow.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+INCLUDEPATH += openssl
+LIBS += /home/bao/qt/btl/openssl/libcrypto.a -ldl -lpthread
+LIBS += /home/bao/qt/btl/openssl/libssl.a
 
-LIBS += -lssl -lcrypto
+
+# Default rules for deployment.
+#qnx: target.path = /tmp/$${TARGET}/bin
+#else: unix:!android: target.path = /opt/$${TARGET}/bin
+#!isEmpty(target.path): INSTALLS += target
+
+#LIBS += -lssl -lcrypto
 
 RESOURCES += \
         qt_resource.qrc

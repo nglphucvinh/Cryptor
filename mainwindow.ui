@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,7 +22,7 @@
      <rect>
       <x>20</x>
       <y>470</y>
-      <width>481</width>
+      <width>371</width>
       <height>31</height>
      </rect>
     </property>
@@ -40,7 +43,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Hash Function:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="hash_box">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -137,36 +140,20 @@
      </item>
     </widget>
    </widget>
-   <widget class="QLineEdit" name="hash_output">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>410</y>
-      <width>371</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>3r23f2f</string>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::NoEcho</enum>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>20</x>
       <y>520</y>
-      <width>67</width>
-      <height>17</height>
+      <width>481</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff2300;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="gen_button">
@@ -230,6 +217,9 @@
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/myres/res/background-blue.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="cipher_lab">
@@ -334,15 +324,72 @@
      </rect>
     </property>
    </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>20</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="hash_output">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>410</y>
+      <width>371</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>290</y>
+      <width>20</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancel_button">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>470</y>
+      <width>81</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+   </widget>
    <zorder>background</zorder>
    <zorder>progressBar</zorder>
    <zorder>hash_sel</zorder>
-   <zorder>comboBox_2</zorder>
+   <zorder>hash_box</zorder>
    <zorder>encrypt_button</zorder>
    <zorder>decrypt_button</zorder>
    <zorder>hash_input</zorder>
    <zorder>splitter</zorder>
-   <zorder>hash_output</zorder>
    <zorder>status</zorder>
    <zorder>gen_button</zorder>
    <zorder>copy_button</zorder>
@@ -354,6 +401,10 @@
    <zorder>key_sel</zorder>
    <zorder>input_box</zorder>
    <zorder>input_key</zorder>
+   <zorder>radioButton</zorder>
+   <zorder>radioButton_2</zorder>
+   <zorder>hash_output</zorder>
+   <zorder>cancel_button</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -361,7 +412,7 @@
      <x>0</x>
      <y>0</y>
      <width>521</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
