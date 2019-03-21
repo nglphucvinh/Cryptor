@@ -134,6 +134,7 @@ void rsa_return(int value, mythread *mthread){
         break;
     case 1:
         str = QString("Successful: ") + mthread->time;
+        emit mthread->progress(100);
         break;
     default:
         break;
@@ -294,7 +295,7 @@ void aes_return(int value, mythread *mthread){
         break;
     case 1:
         str = QString("Successful: ") + mthread->time;
-
+        emit mthread->progress(100);
         break;
     default:
 
@@ -451,7 +452,7 @@ void des_return(int value, mythread *mthread){
         break;
     case 1:
         str = QString("Successful: ") + mthread->time;
-
+        emit mthread->progress(100);
         break;
     default:
         break;
