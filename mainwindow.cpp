@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->key_sel->setEnabled(false);
     ui->encrypt_button->setEnabled(false);
     ui->decrypt_button->setEnabled(false);
+    ui->input_type_2->setEnabled(false);
 
     ui->hash_box->setEnabled(false);
     ui->gen_button->setEnabled(false);
@@ -55,12 +56,10 @@ void MainWindow::on_radioButton_clicked()
     ui->key_sel->setEnabled(true);
     ui->encrypt_button->setEnabled(true);
     ui->decrypt_button->setEnabled(true);
+    ui->input_type_2->setEnabled(true);
 
     ui->progressBar->hide();
     ui->status->hide();
-
-    ui->input_box->setText("/home/bao/qt/btl/a.png");
-    ui->input_key->setText("/home/bao/qt/btl/pubkey.pem");
 }
 
 void MainWindow::on_radioButton_2_clicked()
@@ -71,6 +70,7 @@ void MainWindow::on_radioButton_2_clicked()
     ui->key_sel->setEnabled(false);
     ui->encrypt_button->setEnabled(false);
     ui->decrypt_button->setEnabled(false);
+    ui->input_type_2->setEnabled(false);
 
     ui->hash_box->setEnabled(true);
     ui->gen_button->setEnabled(true);
@@ -191,14 +191,56 @@ void MainWindow::on_encrypt_button_clicked()
         key_type = 2;
     }
 
-    unsigned char *in_dir, *key_dir;
-    qstring_to_uchar(ui->input_box->text(), &in_dir);
-    qstring_to_uchar(ui->input_key->text(), &key_dir);
+    unsigned char *in_dir, *key_dir, *out_dir;
+
+    if(ui->file_sel->isEnabled()){
+        qstring_to_uchar(ui->input_box->text(), &in_dir);
+    }else{
+        unsigned char *s;
+        qstring_to_uchar(ui->input_box->text(), &s);
+
+        QString _in_dir = QDir::currentPath() + "/__in.txt";
+        qstring_to_uchar(_in_dir, &in_dir);
+        FILE *fp = fopen((const char*) in_dir, "w");
+        if(fp == NULL){
+            printf("kec\n");
+            return;
+        }
+        for(unsigned int i = 0; i < strlen((const char*) s); i++){
+            fputc(s[i], fp);
+        }
+        fclose(fp);
+    }
+
+    if(!QString::compare(ui->key_type->currentText(), "Asymmetric - RSA") && !QString::compare(ui->input_type_2->currentText(), "File")){
+        qstring_to_uchar(ui->input_key->text(), &key_dir);
+    }else if(!QString::compare(ui->input_type_2->currentText(), "Generate")){
+        QString _in_dir = QDir::currentPath() + "/__key.txt";
+        qstring_to_uchar(_in_dir, &key_dir);
+    }else{
+        unsigned char *s;
+        qstring_to_uchar(ui->input_key->text(), &s);
+
+        QString _in_dir = QDir::currentPath() + "/__key.txt";
+        qstring_to_uchar(_in_dir, &key_dir);
+        FILE *fp = fopen((const char*) key_dir, "w");
+        if(fp == NULL){
+            printf("kec\n");
+            return;
+        }
+        for(unsigned int i = 0; i < strlen((const char*) s); i++){
+            fputc(s[i], fp);
+        }
+        fclose(fp);
+    }
+
+    QString _out_dir = QDir::currentPath() + "/cipher.txt";
+    qstring_to_uchar(_out_dir, &out_dir);
 
     mThread->type = key_type;
     mThread->Stop = false;
     mThread->path = (const char*) in_dir;
-    mThread->out_path = "/home/bao/qt/btl/cipher.txt";
+    mThread->out_path = (const char*) out_dir;
     mThread->key_path = (const char*) key_dir;
     mThread->isEncrypt = 1;
     mThread->bar = ui->progressBar;
@@ -224,14 +266,56 @@ void MainWindow::on_decrypt_button_clicked()
         key_type = 2;
     }
 
-    unsigned char *in_dir, *key_dir;
-    qstring_to_uchar(ui->input_box->text(), &in_dir);
-    qstring_to_uchar(ui->input_key->text(), &key_dir);
+    unsigned char *in_dir, *key_dir, *out_dir;
+
+    if(ui->file_sel->isEnabled()){
+        qstring_to_uchar(ui->input_box->text(), &in_dir);
+    }else{
+        unsigned char *s;
+        qstring_to_uchar(ui->input_box->text(), &s);
+
+        QString _in_dir = QDir::currentPath() + "/__in.txt";
+        qstring_to_uchar(_in_dir, &in_dir);
+        FILE *fp = fopen((const char*) in_dir, "w");
+        if(fp == NULL){
+            printf("kec\n");
+            return;
+        }
+        for(unsigned int i = 0; i < strlen((const char*) s); i++){
+            fputc(s[i], fp);
+        }
+        fclose(fp);
+    }
+
+    if(!QString::compare(ui->key_type->currentText(), "Asymmetric - RSA") && !QString::compare(ui->input_type_2->currentText(), "File")){
+        qstring_to_uchar(ui->input_key->text(), &key_dir);
+    }else if(!QString::compare(ui->input_type_2->currentText(), "Generate")){
+        QString _in_dir = QDir::currentPath() + "/__key.txt";
+        qstring_to_uchar(_in_dir, &key_dir);
+    }else{
+        unsigned char *s;
+        qstring_to_uchar(ui->input_key->text(), &s);
+
+        QString _in_dir = QDir::currentPath() + "/__key.txt";
+        qstring_to_uchar(_in_dir, &key_dir);
+        FILE *fp = fopen((const char*) key_dir, "w");
+        if(fp == NULL){
+            printf("kec\n");
+            return;
+        }
+        for(unsigned int i = 0; i < strlen((const char*) s); i++){
+            fputc(s[i], fp);
+        }
+        fclose(fp);
+    }
+
+    QString _out_dir = QDir::currentPath() + "/decrypt.txt";
+    qstring_to_uchar(_out_dir, &out_dir);
 
     mThread->type = key_type;
     mThread->Stop = false;
     mThread->path = (const char*) in_dir;
-    mThread->out_path = "/home/bao/qt/btl/decrypt.png";
+    mThread->out_path = (const char*) out_dir;
     mThread->key_path = (const char*) key_dir;
     mThread->isEncrypt = 0;
     mThread->bar = ui->progressBar;
@@ -244,4 +328,54 @@ void MainWindow::on_decrypt_button_clicked()
 void MainWindow::on_cancel_button_clicked()
 {
     mThread->Stop = true;
+}
+
+void MainWindow::on_input_type_activated(const QString &arg1)
+{
+    if(!QString::compare(arg1, "File")){
+        ui->file_sel->setEnabled(true);
+    }else{
+        ui->file_sel->setEnabled(false);
+    }
+}
+
+void MainWindow::on_input_type_2_activated(const QString &arg1)
+{
+    if(!QString::compare(arg1, "File")){
+        ui->key_sel->setEnabled(true);
+        return;
+    }else if(!QString::compare(arg1, "Generate") && QString::compare(ui->key_type->currentText(), "Asymmetric - RSA")){
+        unsigned char *in_dir;
+        QString _in_dir = QDir::currentPath() + "/__key.txt";
+        qstring_to_uchar(_in_dir, &in_dir);
+
+        FILE *fp = fopen((const char*) in_dir, "w");
+        if(fp == NULL){
+            printf("kec\n");
+            return;
+        }
+        int length = !QString::compare(ui->key_type->currentText(), "Symmetric - DES")? 8: 16;
+        for(int i = 0; i < length; i++){
+            unsigned char c = (unsigned char) (rand()%93 + 33);
+            fputc(c, fp);
+        }
+        fclose(fp);
+
+        QFile f(_in_dir);
+        if(!f.open(QIODevice::ReadOnly))
+            return;
+        QTextStream instream(&f);
+        QString line = instream.readLine();
+        ui->input_key->setText(line);
+    }
+    ui->key_sel->setEnabled(false);
+}
+
+void MainWindow::on_key_type_activated(const QString &arg1)
+{
+    if(!QString::compare(arg1, "Asymmetric - RSA")){
+        ui->input_key->setEnabled(false);
+    }else{
+        ui->input_key->setEnabled(true);
+    }
 }

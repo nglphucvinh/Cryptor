@@ -35,6 +35,12 @@ private slots:
 
     void on_cancel_button_clicked();
 
+    void on_input_type_activated(const QString &arg1);
+
+    void on_input_type_2_activated(const QString &arg1);
+
+    void on_key_type_activated(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 };

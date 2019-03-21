@@ -138,7 +138,6 @@ void rsa_return(int value, mythread *mthread){
     default:
         break;
     }
-
     emit mthread->status(str);
 }
 

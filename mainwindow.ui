@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
+    <width>620</width>
     <height>629</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>60</x>
       <y>470</y>
       <width>371</width>
       <height>31</height>
@@ -33,7 +33,7 @@
    <widget class="QLabel" name="hash_sel">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>60</x>
       <y>330</y>
       <width>101</width>
       <height>25</height>
@@ -46,7 +46,7 @@
    <widget class="QComboBox" name="hash_box">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>190</x>
       <y>330</y>
       <width>69</width>
       <height>25</height>
@@ -92,7 +92,7 @@
    <widget class="QLineEdit" name="hash_input">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>60</x>
       <y>370</y>
       <width>371</width>
       <height>25</height>
@@ -125,17 +125,17 @@
      </property>
      <item>
       <property name="text">
-       <string>Asymmetric - RSA</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>Symmetric - DES</string>
       </property>
      </item>
      <item>
       <property name="text">
        <string>Symmetric - AES</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Asymmetric - RSA</string>
       </property>
      </item>
     </widget>
@@ -159,20 +159,20 @@
    <widget class="QPushButton" name="gen_button">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>460</x>
       <y>370</y>
       <width>89</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Genearate</string>
+     <string>Generate</string>
     </property>
    </widget>
    <widget class="QPushButton" name="copy_button">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>460</x>
       <y>410</y>
       <width>89</width>
       <height>25</height>
@@ -185,7 +185,7 @@
    <widget class="QLabel" name="hash_lab">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>290</x>
       <y>290</y>
       <width>91</width>
       <height>21</height>
@@ -209,8 +209,8 @@
    <widget class="QLabel" name="background">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>-90</x>
+      <y>520</y>
       <width>521</width>
       <height>571</height>
      </rect>
@@ -225,7 +225,7 @@
    <widget class="QLabel" name="cipher_lab">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>270</x>
       <y>20</y>
       <width>91</width>
       <height>21</height>
@@ -275,7 +275,7 @@
    <widget class="QPushButton" name="file_sel">
     <property name="geometry">
      <rect>
-      <x>423</x>
+      <x>520</x>
       <y>80</y>
       <width>80</width>
       <height>25</height>
@@ -288,7 +288,7 @@
    <widget class="QPushButton" name="key_sel">
     <property name="geometry">
      <rect>
-      <x>423</x>
+      <x>520</x>
       <y>170</y>
       <width>80</width>
       <height>25</height>
@@ -327,7 +327,7 @@
    <widget class="QRadioButton" name="radioButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>250</x>
       <y>20</y>
       <width>20</width>
       <height>22</height>
@@ -346,7 +346,7 @@
    <widget class="QLineEdit" name="hash_output">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>60</x>
       <y>410</y>
       <width>371</width>
       <height>25</height>
@@ -356,7 +356,7 @@
    <widget class="QRadioButton" name="radioButton_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>270</x>
       <y>290</y>
       <width>20</width>
       <height>22</height>
@@ -372,7 +372,7 @@
    <widget class="QPushButton" name="cancel_button">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>460</x>
       <y>470</y>
       <width>81</width>
       <height>27</height>
@@ -381,6 +381,63 @@
     <property name="text">
      <string>Cancel</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="input_type">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>80</y>
+      <width>81</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <item>
+     <property name="text">
+      <string>File</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Text</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="input_type_2">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>170</y>
+      <width>81</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <item>
+     <property name="text">
+      <string>File</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Text</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Generate</string>
+     </property>
+    </item>
    </widget>
    <zorder>background</zorder>
    <zorder>progressBar</zorder>
@@ -395,7 +452,6 @@
    <zorder>copy_button</zorder>
    <zorder>hash_lab</zorder>
    <zorder>cipher_lab</zorder>
-   <zorder>key</zorder>
    <zorder>input</zorder>
    <zorder>file_sel</zorder>
    <zorder>key_sel</zorder>
@@ -405,13 +461,16 @@
    <zorder>radioButton_2</zorder>
    <zorder>hash_output</zorder>
    <zorder>cancel_button</zorder>
+   <zorder>input_type</zorder>
+   <zorder>key</zorder>
+   <zorder>input_type_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>521</width>
+     <width>620</width>
      <height>25</height>
     </rect>
    </property>
