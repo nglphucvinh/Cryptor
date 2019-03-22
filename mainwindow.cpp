@@ -21,6 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->status->hide();
 
+    ui->input_box->setEnabled(false);
+    ui->file_sel->setEnabled(false);
+    ui->input_type->setEnabled(false);
+
     ui->input_key->setEnabled(false);
     ui->key_type->setEnabled(false);
     ui->key_sel->setEnabled(false);
@@ -46,6 +50,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_radioButton_clicked()
 {
+    ui->input_box->setEnabled(true);
+    ui->file_sel->setEnabled(true);
+    ui->input_type->setEnabled(true);
+
     ui->hash_box->setEnabled(false);
     ui->gen_button->setEnabled(false);
     ui->copy_button->setEnabled(false);
@@ -64,6 +72,10 @@ void MainWindow::on_radioButton_clicked()
 
 void MainWindow::on_radioButton_2_clicked()
 {
+    ui->input_box->setEnabled(true);
+    ui->file_sel->setEnabled(true);
+    ui->input_type->setEnabled(true);
+
     ui->input_key->setEnabled(false);
     ui->encrypt->setEnabled(false);
     ui->key_type->setEnabled(false);

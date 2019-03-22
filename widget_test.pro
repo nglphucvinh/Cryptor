@@ -41,16 +41,15 @@ FORMS += \
         mainwindow.ui
 
 INCLUDEPATH += openssl
-LIBS += /home/bao/qt/btl/openssl/libcrypto.a -ldl -lpthread
-LIBS += /home/bao/qt/btl/openssl/libssl.a
-
+#LIBS += /home/bao/qt/btl/openssl/libcrypto.a -ldl -lpthread
+#LIBS += /home/bao/qt/btl/openssl/libssl.a
 
 # Default rules for deployment.
 #qnx: target.path = /tmp/$${TARGET}/bin
 #else: unix:!android: target.path = /opt/$${TARGET}/bin
 #!isEmpty(target.path): INSTALLS += target
 
-#LIBS += -lssl -lcrypto
+LIBS += -lssl -lcrypto -lpthread
 
 RESOURCES += \
         qt_resource.qrc
