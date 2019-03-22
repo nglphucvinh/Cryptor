@@ -83,12 +83,19 @@ void MainWindow::change_cancel_button(int value)
 
 void MainWindow::on_radioButton_clicked()
 {
+    if(!QString::compare(ui->input_type->currentText(), "File")){
+        ui->file_sel->setEnabled(true);
+        ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                    "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                    "QPushButton:hover {color: white; background-color: "
+                                    "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
+    }else{
+        ui->file_sel->setEnabled(false);
+        ui->file_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+                 "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    }
+
     ui->input_box->setEnabled(true);
-    ui->file_sel->setEnabled(true);
-    ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
-                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
-                                "QPushButton:hover {color: white; background-color: "
-                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
 
     ui->input_type->setEnabled(true);
     ui->input_type->setStyleSheet("QComboBox {color: white; border: black; background-color: "
@@ -129,18 +136,29 @@ void MainWindow::on_radioButton_clicked()
 
     ui->progressBar->hide();
     ui->status->hide();
+
 }
 
 void MainWindow::on_radioButton_2_clicked()
 {
-    ui->input_box->setEnabled(true);
-    ui->file_sel->setEnabled(true);
-    ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
-                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
-                                "QPushButton:hover {color: white; background-color: "
-                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
-    ui->input_type->setEnabled(true);
 
+    if(!QString::compare(ui->input_type->currentText(), "File")){
+        ui->file_sel->setEnabled(true);
+        ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                    "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                    "QPushButton:hover {color: white; background-color: "
+                                    "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
+    }else{
+        ui->file_sel->setEnabled(false);
+        ui->file_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+                 "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    }
+
+    ui->input_box->setEnabled(true);
+
+    ui->input_type->setEnabled(true);
+    ui->input_type->setStyleSheet("QComboBox {color: white; border: black; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->encrypt->setEnabled(false);
 
     ui->input_type_2->setEnabled(false);
@@ -439,8 +457,14 @@ void MainWindow::on_input_type_activated(const QString &arg1)
 {
     if(!QString::compare(arg1, "File")){
         ui->file_sel->setEnabled(true);
+        ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                    "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                    "QPushButton:hover {color: white; background-color: "
+                                    "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     }else{
         ui->file_sel->setEnabled(false);
+        ui->file_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+                 "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     }
 }
 
