@@ -20,14 +20,31 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>470</y>
-      <width>371</width>
-      <height>31</height>
+      <x>20</x>
+      <y>471</y>
+      <width>481</width>
+      <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar{
+color: gray;
+}
+QProgressBar:horizontal {
+border: 1px solid gray;
+border-radius: 3px;
+background: white;
+padding: 1px;
+text-align: center;
+margin-right: 4ex;
+}
+QProgressBar::chunk{
+background: qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));
+color: white;
+}</string>
+    </property>
     <property name="value">
-     <number>24</number>
+     <number>19</number>
     </property>
    </widget>
    <widget class="QLabel" name="hash_sel">
@@ -35,12 +52,17 @@
      <rect>
       <x>70</x>
       <y>330</y>
-      <width>101</width>
+      <width>111</width>
       <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Hash Function:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2e3436;&quot;&gt;Hash Function:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QComboBox" name="hash_box">
@@ -51,6 +73,9 @@
       <width>69</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <item>
      <property name="text">
@@ -66,11 +91,15 @@
    <widget class="QPushButton" name="encrypt_button">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>220</y>
       <width>89</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
      <string>Encrypt</string>
@@ -79,11 +108,15 @@
    <widget class="QPushButton" name="decrypt_button">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>370</x>
       <y>220</y>
       <width>89</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
      <string>Decrypt</string>
@@ -104,7 +137,7 @@
      <rect>
       <x>20</x>
       <y>120</y>
-      <width>311</width>
+      <width>331</width>
       <height>25</height>
      </rect>
     </property>
@@ -112,8 +145,14 @@
      <enum>Qt::Horizontal</enum>
     </property>
     <widget class="QLabel" name="encrypt">
+     <property name="font">
+      <font>
+       <family>Sans</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Encryption Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2e3436;&quot;&gt;Encryption Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QComboBox" name="key_type">
@@ -122,6 +161,11 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+
+</string>
      </property>
      <item>
       <property name="text">
@@ -161,12 +205,16 @@
      <rect>
       <x>470</x>
       <y>370</y>
-      <width>89</width>
+      <width>91</width>
       <height>25</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
+    </property>
     <property name="text">
-     <string>Generate</string>
+     <string>Gen/Comp</string>
     </property>
    </widget>
    <widget class="QPushButton" name="copy_button">
@@ -178,6 +226,10 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
+    </property>
     <property name="text">
      <string>Copy</string>
     </property>
@@ -185,8 +237,8 @@
    <widget class="QLabel" name="hash_lab">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>290</y>
+      <x>260</x>
+      <y>270</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -194,13 +246,13 @@
     <property name="font">
      <font>
       <family>DejaVu Sans</family>
-      <pointsize>14</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#73d216;&quot;&gt;Hashes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;Hashes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -215,8 +267,11 @@
       <height>629</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {background-color: white}</string>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/myres/res/background-blue.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/myres/res/background-1.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>
@@ -225,8 +280,8 @@
    <widget class="QLabel" name="cipher_lab">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>20</y>
+      <x>260</x>
+      <y>10</y>
       <width>91</width>
       <height>21</height>
      </rect>
@@ -234,13 +289,13 @@
     <property name="font">
      <font>
       <family>DejaVu Sans</family>
-      <pointsize>14</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#73d216;&quot;&gt;Ciphers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;Ciphers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -255,8 +310,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#eeeeec;&quot;&gt;Key:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2e3436;&quot;&gt;Key:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="input">
@@ -268,8 +329,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Input:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#2e3436;&quot;&gt;Input:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="file_sel">
@@ -280,6 +347,10 @@
       <width>80</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
      <string>From files</string>
@@ -293,6 +364,10 @@
       <width>80</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
      <string>From files</string>
@@ -327,8 +402,8 @@
    <widget class="QRadioButton" name="radioButton">
     <property name="geometry">
      <rect>
-      <x>265</x>
-      <y>20</y>
+      <x>300</x>
+      <y>40</y>
       <width>20</width>
       <height>22</height>
      </rect>
@@ -356,8 +431,8 @@
    <widget class="QRadioButton" name="radioButton_2">
     <property name="geometry">
      <rect>
-      <x>265</x>
-      <y>290</y>
+      <x>300</x>
+      <y>300</y>
       <width>20</width>
       <height>22</height>
      </rect>
@@ -372,11 +447,15 @@
    <widget class="QPushButton" name="cancel_button">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>520</x>
       <y>470</y>
       <width>81</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
      <string>Cancel</string>
@@ -396,6 +475,9 @@
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <item>
      <property name="text">
@@ -423,6 +505,9 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
+    </property>
     <item>
      <property name="text">
       <string>File</string>
@@ -438,6 +523,58 @@
       <string>Generate</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>300</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>~~~~~~~</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>300</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>~~~~~~~</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>40</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>~~~~~~~</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>40</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>~~~~~~~</string>
+    </property>
    </widget>
    <zorder>background</zorder>
    <zorder>progressBar</zorder>
@@ -464,6 +601,10 @@
    <zorder>input_type</zorder>
    <zorder>key</zorder>
    <zorder>input_type_2</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

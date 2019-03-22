@@ -41,6 +41,8 @@ private slots:
 
     void on_key_type_activated(const QString &arg1);
 
+    void on_progressBar_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };

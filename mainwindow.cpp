@@ -17,29 +17,52 @@ mythread *mThread = new mythread(1, false, NULL, NULL, NULL, 1, NULL, NULL);
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
-{
+{   // Initialize GUI
     ui->setupUi(this);
     ui->status->hide();
 
     ui->input_box->setEnabled(false);
     ui->file_sel->setEnabled(false);
+    ui->file_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->input_type->setEnabled(false);
+    ui->input_type->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
 
     ui->input_key->setEnabled(false);
-    ui->key_type->setEnabled(false);
+    ui->input_key->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->key_sel->setEnabled(false);
+    ui->key_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->key_type->setEnabled(false);
+    ui->key_type->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->encrypt_button->setEnabled(false);
+    ui->encrypt_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->decrypt_button->setEnabled(false);
+    ui->decrypt_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->input_type_2->setEnabled(false);
+    ui->input_type_2->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
 
     ui->hash_box->setEnabled(false);
+    ui->hash_box->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->gen_button->setEnabled(false);
+    ui->gen_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->copy_button->setEnabled(false);
+    ui->copy_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->hash_input->setEnabled(false);
     ui->hash_output->setEnabled(false);
 
     ui->progressBar->setValue(0);
     ui->progressBar->hide();
+    ui->cancel_button->hide();
     ui->status->setStyleSheet("QLabel {color : red;}");
 }
 
@@ -52,19 +75,47 @@ void MainWindow::on_radioButton_clicked()
 {
     ui->input_box->setEnabled(true);
     ui->file_sel->setEnabled(true);
-    ui->input_type->setEnabled(true);
+    ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
 
+    ui->input_type->setEnabled(true);
+    ui->input_type->setStyleSheet("QComboBox {color: white; border: black; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->hash_box->setEnabled(false);
+    ui->hash_box->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->gen_button->setEnabled(false);
+    ui->gen_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->copy_button->setEnabled(false);
+    ui->copy_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
     ui->hash_input->setEnabled(false);
 
     ui->input_key->setEnabled(true);
     ui->key_type->setEnabled(true);
+    ui->key_type->setStyleSheet("QComboBox {color: white; border: black; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->key_sel->setEnabled(true);
+    ui->key_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->encrypt_button->setEnabled(true);
+    ui->encrypt_button->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->decrypt_button->setEnabled(true);
+    ui->decrypt_button->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->input_type_2->setEnabled(true);
+    ui->input_type_2->setStyleSheet("QComboBox {color: white; border: black; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
 
     ui->progressBar->hide();
     ui->status->hide();
@@ -74,19 +125,46 @@ void MainWindow::on_radioButton_2_clicked()
 {
     ui->input_box->setEnabled(true);
     ui->file_sel->setEnabled(true);
+    ui->file_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->input_type->setEnabled(true);
 
-    ui->input_key->setEnabled(false);
     ui->encrypt->setEnabled(false);
-    ui->key_type->setEnabled(false);
-    ui->key_sel->setEnabled(false);
-    ui->encrypt_button->setEnabled(false);
-    ui->decrypt_button->setEnabled(false);
+
     ui->input_type_2->setEnabled(false);
+    ui->input_type_2->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->input_key->setEnabled(false);
+    ui->input_key->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->key_sel->setEnabled(false);
+    ui->key_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->key_type->setEnabled(false);
+    ui->key_type->setStyleSheet("QComboBox {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->encrypt_button->setEnabled(false);
+    ui->encrypt_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
+    ui->decrypt_button->setEnabled(false);
+    ui->decrypt_button->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
 
     ui->hash_box->setEnabled(true);
+    ui->hash_box->setStyleSheet("QComboBox {color: white; border: black; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->gen_button->setEnabled(true);
+    ui->gen_button->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->copy_button->setEnabled(true);
+    ui->copy_button->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                "QPushButton:hover {color: white; background-color: "
+                                "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
     ui->hash_input->setEnabled(true);
 
     ui->progressBar->hide();
@@ -258,6 +336,7 @@ void MainWindow::on_encrypt_button_clicked()
     mThread->bar = ui->progressBar;
     mThread->label = ui->status;
 
+    ui->cancel_button->show();
     ui->progressBar->show();
     mThread->start();
 }
@@ -333,6 +412,7 @@ void MainWindow::on_decrypt_button_clicked()
     mThread->bar = ui->progressBar;
     mThread->label = ui->status;
 
+    ui->cancel_button->show();
     ui->progressBar->show();
     mThread->start();
 }
@@ -385,9 +465,33 @@ void MainWindow::on_input_type_2_activated(const QString &arg1)
 
 void MainWindow::on_key_type_activated(const QString &arg1)
 {
+    ui->input_key->setText("");
     if(!QString::compare(arg1, "Asymmetric - RSA")){
         ui->input_key->setEnabled(false);
     }else{
         ui->input_key->setEnabled(true);
+    }
+}
+
+void MainWindow::on_progressBar_valueChanged(int value)
+{
+    if(value == 100){
+        ui->progressBar->setStyleSheet("QProgressBar{color: white;}"
+                                       "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"
+                                       "QProgressBar::chunk{background: "
+                                       "qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));}");
+        ui->cancel_button->hide();
+    }
+    if(value>50){
+        ui->progressBar->setStyleSheet("QProgressBar{color: white;}"
+                                       "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"
+                                       "QProgressBar::chunk{background: "
+                                       "qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));}");
+    }
+    else{
+        ui->progressBar->setStyleSheet("QProgressBar{color: black;}"
+                                       "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"
+                                       "QProgressBar::chunk{background: "
+                                       "qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));}");
     }
 }

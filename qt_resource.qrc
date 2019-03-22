@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/myres">
         <file>res/background-blue.png</file>
+        <file>res/background-1.png</file>
+        <file>res/decorative_line.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>res/UTM_Aptima.ttf</file>
     </qresource>
 </RCC>
