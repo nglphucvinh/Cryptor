@@ -189,7 +189,8 @@ void MainWindow::on_file_sel_clicked()
                 "/home/",
                 "All files (*.*);;Text Files (*.txt)"
                 );
-    ui->input_box->setText(input_dir);
+    if(input_dir != NULL)
+        ui->input_box->setText(input_dir);
 }
 
 void MainWindow::on_gen_button_clicked()
@@ -262,6 +263,9 @@ void MainWindow::on_copy_button_clicked()
     QString text = ui->hash_output->text();
     QClipboard *p = QApplication::clipboard();
     p->setText(text);
+
+    ui->status->show();
+    ui->status->setText("Copied to Clipboard !!!");
 }
 
 void MainWindow::on_key_sel_clicked()
@@ -272,7 +276,8 @@ void MainWindow::on_key_sel_clicked()
                 "/home/",
                 "All files (*.*);;Text Files (*.txt)"
                 );
-    ui->input_key->setText(input_dir);
+    if(input_dir != NULL)
+        ui->input_key->setText(input_dir);
 }
 
 void MainWindow::on_encrypt_button_clicked()
@@ -334,7 +339,7 @@ void MainWindow::on_encrypt_button_clicked()
         fclose(fp);
     }
 
-    QString _out_dir = QDir::currentPath() + "/cipher.txt";
+    QString _out_dir = QDir::currentPath() + "/cipher.cryptor";
     qstring_to_uchar(_out_dir, &out_dir);
 
     mThread->type = key_type;
