@@ -472,6 +472,10 @@ void MainWindow::on_input_type_2_activated(const QString &arg1)
 {
     if(!QString::compare(arg1, "File")){
         ui->key_sel->setEnabled(true);
+        ui->key_sel->setStyleSheet("QPushButton {color: white; border: black; background-color:"
+                                    "qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}"
+                                    "QPushButton:hover {color: white; background-color: "
+                                    "qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}");
         return;
     }else if(!QString::compare(arg1, "Generate") && QString::compare(ui->key_type->currentText(), "Asymmetric - RSA")){
         unsigned char *in_dir;
@@ -498,6 +502,8 @@ void MainWindow::on_input_type_2_activated(const QString &arg1)
         ui->input_key->setText(line);
     }
     ui->key_sel->setEnabled(false);
+    ui->key_sel->setStyleSheet("QPushButton {color:white; border: black; background-color:"
+             "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
 }
 
 void MainWindow::on_key_type_activated(const QString &arg1)
