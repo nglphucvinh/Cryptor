@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->input_type->setEnabled(false);
     ui->input_type->setStyleSheet("QComboBox {color:white; border: black; background-color:"
              "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
-
     ui->input_key->setEnabled(false);
     ui->input_key->setStyleSheet("QPushButton {color:white; border: black; background-color:"
              "qlineargradient(spread:pad, x1:1, y1:0.631, x2:1, y2:0, stop:0 rgba(106, 117, 140, 255), stop:1 rgba(106, 140, 125, 255))}");
@@ -482,7 +481,7 @@ void MainWindow::on_progressBar_valueChanged(int value)
                                        "qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));}");
         ui->cancel_button->hide();
     }
-    if(value>50){
+    if(value>47){
         ui->progressBar->setStyleSheet("QProgressBar{color: white;}"
                                        "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"
                                        "QProgressBar::chunk{background: "

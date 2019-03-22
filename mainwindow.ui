@@ -22,7 +22,7 @@
      <rect>
       <x>20</x>
       <y>471</y>
-      <width>481</width>
+      <width>571</width>
       <height>20</height>
      </rect>
     </property>
@@ -188,7 +188,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>520</y>
+      <y>540</y>
       <width>481</width>
       <height>31</height>
      </rect>
@@ -447,8 +447,8 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QPushButton" name="cancel_button">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>470</y>
+      <x>260</x>
+      <y>500</y>
       <width>81</width>
       <height>27</height>
      </rect>
@@ -477,7 +477,21 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
+     <string notr="true">QComboBox {
+color: white;
+border: black;
+background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));
+}
+QComboBox QAbstractItemView {
+    border: 2px solid darkgray;
+    selection-background-color: blue;
+}
+QComboBox::drop-down {
+}
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}</string>
     </property>
     <item>
      <property name="text">
