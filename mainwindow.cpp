@@ -61,13 +61,24 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->progressBar->setValue(0);
     ui->progressBar->hide();
-    ui->cancel_button->hide();
-    ui->status->setStyleSheet("QLabel {color : red;}");
-}
 
+    ui->cancel_button->hide();
+
+    ui->status->setStyleSheet("QLabel {color : red;}");
+    QObject::connect(mThread, SIGNAL(progress(int)), this, SLOT(change_cancel_button(int)));
+}
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::change_cancel_button(int value)
+{
+   if(value > 0 && value < 100){
+       ui->cancel_button->show();
+   }else{
+       ui->cancel_button->hide();
+   }
 }
 
 void MainWindow::on_radioButton_clicked()
@@ -335,7 +346,6 @@ void MainWindow::on_encrypt_button_clicked()
     mThread->bar = ui->progressBar;
     mThread->label = ui->status;
 
-    ui->cancel_button->show();
     ui->progressBar->show();
     mThread->start();
 }
@@ -411,7 +421,6 @@ void MainWindow::on_decrypt_button_clicked()
     mThread->bar = ui->progressBar;
     mThread->label = ui->status;
 
-    ui->cancel_button->show();
     ui->progressBar->show();
     mThread->start();
 }
@@ -474,13 +483,6 @@ void MainWindow::on_key_type_activated(const QString &arg1)
 
 void MainWindow::on_progressBar_valueChanged(int value)
 {
-    if(value == 100){
-        ui->progressBar->setStyleSheet("QProgressBar{color: white;}"
-                                       "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"
-                                       "QProgressBar::chunk{background: "
-                                       "qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));}");
-        ui->cancel_button->hide();
-    }
     if(value>47){
         ui->progressBar->setStyleSheet("QProgressBar{color: white;}"
                                        "QProgressBar:horizontal {border: 1px solid gray; border-radius: 3px; background: white; padding: 1px; text-align: center;}"

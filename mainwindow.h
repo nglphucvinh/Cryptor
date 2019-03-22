@@ -43,6 +43,8 @@ private slots:
 
     void on_progressBar_valueChanged(int value);
 
+    void change_cancel_button(int value);
+
 private:
     Ui::MainWindow *ui;
 };
