@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>471</y>
+      <y>466</y>
       <width>571</width>
       <height>20</height>
      </rect>
@@ -31,12 +31,11 @@
 color: gray;
 }
 QProgressBar:horizontal {
-border: 1px solid gray;
+border: 1px gray;
 border-radius: 3px;
-background: white;
+background: rgb(238, 238, 236);
 padding: 1px;
 text-align: center;
-margin-right: 4ex;
 }
 QProgressBar::chunk{
 background: qlineargradient(spread:pad, x1:0.542, y1:1, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255));
@@ -50,7 +49,7 @@ color: white;
    <widget class="QLabel" name="hash_sel">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>20</x>
       <y>330</y>
       <width>111</width>
       <height>25</height>
@@ -68,9 +67,9 @@ color: white;
    <widget class="QComboBox" name="hash_box">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>140</x>
       <y>330</y>
-      <width>69</width>
+      <width>91</width>
       <height>25</height>
      </rect>
     </property>
@@ -125,64 +124,12 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QLineEdit" name="hash_input">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>370</y>
-      <width>371</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSplitter" name="splitter">
-    <property name="geometry">
-     <rect>
       <x>20</x>
-      <y>120</y>
-      <width>331</width>
+      <y>370</y>
+      <width>431</width>
       <height>25</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <widget class="QLabel" name="encrypt">
-     <property name="font">
-      <font>
-       <family>Sans</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2e3436;&quot;&gt;Encryption Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="key_type">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
-
-</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>Symmetric - DES</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Symmetric - AES</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Asymmetric - RSA</string>
-      </property>
-     </item>
-    </widget>
    </widget>
    <widget class="QLabel" name="status">
     <property name="geometry">
@@ -205,7 +152,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      <rect>
       <x>470</x>
       <y>370</y>
-      <width>91</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -214,7 +161,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
 QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
     </property>
     <property name="text">
-     <string>Gen/Comp</string>
+     <string>Gen/Compare</string>
     </property>
    </widget>
    <widget class="QPushButton" name="copy_button">
@@ -222,7 +169,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      <rect>
       <x>470</x>
       <y>410</y>
-      <width>89</width>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -237,9 +184,9 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QLabel" name="hash_lab">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>250</x>
       <y>270</y>
-      <width>91</width>
+      <width>111</width>
       <height>21</height>
      </rect>
     </property>
@@ -252,7 +199,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;Hashes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;HASHES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -280,9 +227,9 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QLabel" name="cipher_lab">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>255</x>
       <y>10</y>
-      <width>91</width>
+      <width>101</width>
       <height>21</height>
      </rect>
     </property>
@@ -295,7 +242,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;Ciphers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#5376ba;&quot;&gt;CIPHERS&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -342,9 +289,9 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QPushButton" name="file_sel">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>499</x>
       <y>80</y>
-      <width>80</width>
+      <width>101</width>
       <height>25</height>
      </rect>
     </property>
@@ -359,15 +306,16 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QPushButton" name="key_sel">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>499</x>
       <y>170</y>
-      <width>80</width>
+      <width>101</width>
       <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
-QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}</string>
+QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+</string>
     </property>
     <property name="text">
      <string>From files</string>
@@ -378,7 +326,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      <rect>
       <x>74</x>
       <y>80</y>
-      <width>331</width>
+      <width>311</width>
       <height>25</height>
      </rect>
     </property>
@@ -394,7 +342,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
      <rect>
       <x>73</x>
       <y>170</y>
-      <width>331</width>
+      <width>311</width>
       <height>25</height>
      </rect>
     </property>
@@ -421,9 +369,9 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QLineEdit" name="hash_output">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>20</x>
       <y>410</y>
-      <width>371</width>
+      <width>431</width>
       <height>25</height>
      </rect>
     </property>
@@ -464,7 +412,7 @@ QPushButton:hover {color: white; background-color: qlineargradient(spread:pad, x
    <widget class="QComboBox" name="input_type">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>400</x>
       <y>80</y>
       <width>81</width>
       <height>25</height>
@@ -507,7 +455,7 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
    <widget class="QComboBox" name="input_type_2">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>400</x>
       <y>170</y>
       <width>81</width>
       <height>25</height>
@@ -590,6 +538,61 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
      <string>~~~~~~~</string>
     </property>
    </widget>
+   <widget class="QLabel" name="encrypt">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>125</y>
+      <width>134</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#2e3436;&quot;&gt;Encryption Type:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="key_type">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>123</y>
+      <width>150</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {color: white; border: black; background-color: qlineargradient(spread:pad, x1:1, y1:0.738636, x2:0.975124, y2:0, stop:0.0742574 rgba(83, 118, 186, 255), stop:1 rgba(106, 229, 175, 255))}
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Symmetric - DES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Symmetric - AES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Asymmetric - RSA</string>
+     </property>
+    </item>
+   </widget>
    <zorder>background</zorder>
    <zorder>progressBar</zorder>
    <zorder>hash_sel</zorder>
@@ -619,6 +622,8 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
    <zorder>label_4</zorder>
+   <zorder>encrypt</zorder>
+   <zorder>key_type</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
